@@ -32,17 +32,16 @@ $(BUILD_DIR): $(SOURCE_DIR)/$(NAME).c
 clean:
 	$(RM) -r $(BUILD_DIR)/
 
-check: $(LOG) 
-    @temp = 0 ; \
-    for test in $(TESTS_NAMES) ; do \
-        if [ "$$(cat $(BUILD_DIR)/$$test.log)" = "1" ]; then \
-            echo test $$test failed; \
-            temp = 1; \
-        else \
-            echo test $$test passed ; \
-            
-        fi \
-    done; \ 
+check: $(LOG)
+	@temp=0 ; \
+	for test in $(TESTS_NAMES) ; do \
+		if [ "$$(cat $(BUILD_DIR)/$$test.log)" = "1" ] ; then \
+			echo test $$test failed ; \
+			temp=1 ; \
+		else \
+			echo test $$test passed ; \
+		fi \
+	done ; \
     exit $$temp
 
 @(LOG): $(BUILD_DIR)/%.log : $(BUILD_DIR)/%.out $(TEST_DIR)/%.out
