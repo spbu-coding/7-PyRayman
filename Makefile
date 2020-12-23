@@ -17,7 +17,6 @@ LOG = $(TESTS_INPUT:$(TEST_DIR)/%.in=$(BUILD_TEST)/%.log)
 .INTERMEDIATE: $(OBJ) $(TESTS_RESULT)
 .SECONDARY: $(TARGET) $(LOG)
 
-
 all: $(TARGET)
 
 $(OBJ): $(SOURCE_DIR)/$(NAME).c | $(BUILD_DIR)
@@ -30,7 +29,7 @@ $(BUILD_DIR): $(SOURCE_DIR)/$(NAME).c
 	@mkdir -p $@
 
 clean:
-	$(RM) -r $(BUILD_DIR)/
+	$(RM) $(BUILD_DIR)/$(NAME) $(BLD_OBJS) $(LOG)
 
 check: $(LOG)
 	@temp=0 ; \
