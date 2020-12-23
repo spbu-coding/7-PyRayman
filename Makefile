@@ -3,6 +3,8 @@ include CONFIG.cfg
 
 CC = gcc
 LD = gcc
+FLAGS = -g -O2 -Wall -Wextra -Wpedantic -Werror
+LFLAG = 
 
 TARGET = $(BUILD_DIR)/$(NAME)
 OBJ = $(TARGET).o
@@ -20,10 +22,10 @@ LOG = $(TESTS_INPUT:$(TEST_DIR)/%.in=$(BUILD_TEST)/%.log)
 all: $(TARGET)
 
 $(OBJ): $(SOURCE_DIR)/$(NAME).c | $(BUILD_DIR)
-	$(CC) -c -o $@ $<
+	$(CC) -c $(FLAGS) -o $@ $<
 
 $(TARGET): $(OBJ)
-	$(LD) -o $@ $<
+	$(LD) $(LFLAG) -o $@ $<
 
 $(BUILD_DIR): $(SOURCE_DIR)/$(NAME).c
 	@mkdir -p $@
