@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
-
 #include "tools.h"
 
 #define MAX_INPUT_STRING_SIZE 1000
