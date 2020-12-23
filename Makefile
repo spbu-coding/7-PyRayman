@@ -44,11 +44,11 @@ check: $(LOG)
 	done ; \
     exit $$temp
 
-@(LOG): $(BUILD_DIR)/%.log : $(BUILD_DIR)/%.out $(TEST_DIR)/%.out
-    @cmp -s $^ ; echo $$? > $@
+$(LOG): $(BUILD_DIR)/%.log :$(BUILD_DIR)/%.out $(TEST_DIR)/%.out
+	@cmp -s $^ ; echo $$? > $@
 
-$(TESTS_RESULT): $(BUILD_DIR)/%.out : $(TEST_DIR)/%.in $(BULD_DIR)/$(NAME)
-    @./$(TARGET) $< > $@
+$(TESTS_RESULT): $(BUILD_DIR)/%.out : $(TEST_DIR)/%.in $(TARGET)
+	@./$(TARGET) $< > $@
 
 
 
