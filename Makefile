@@ -1,6 +1,6 @@
 .PHONY: all clean check
 include CONFIG.cfg
-BLD_OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/main_work.o
+BLD_OBJS = $(BUILD_DIR)/sorter.o $(BUILD_DIR)/tools.o
 CC = gcc
 LD = gcc
 TARGET = $(BUILD_DIR)/$(NAME)
