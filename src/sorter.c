@@ -18,7 +18,7 @@ void free_memory(char** array, int count){
 void add_new_line_symbol(char* string)
 {
     int count_of_sybmol = 0;
-    while( string[count_of_sybmol] != '\n' && string[count_of_sybmol] != '\0' && count_of_sybmol < MAX_SIZE_OF_LINE){
+    while( string[count_of_sybmol] != '\n' && string[count_of_sybmol] != '\0' && count_of_sybmol < MAX_INPUT_STRING_SIZE){
         count_of_sybmol++;
     }
     string[count_of_sybmol] = '\n';
@@ -51,7 +51,7 @@ int check_punctuation_mark(char symbol)
 
 void rewrite( char *string , int start )
 {
-    if( start  > MAX_SIZE_OF_LINE )
+    if( start  > MAX_INPUT_STRING_SIZE )
         return;
     while( string[start] != '\n' && string[start] != '\0' )
     {
