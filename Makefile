@@ -17,19 +17,20 @@ LOG = $(TESTS_INPUT:$(TEST_DIR)/%.in=$(BUILD_TEST)/%.log)
 .INTERMEDIATE: $(OBJ) $(TESTS_RESULT)
 .SECONDARY: $(TARGET) $(LOG)
 
+
 all: $(TARGET)
 
 $(OBJ): $(SOURCE_DIR)/$(NAME).c | $(BUILD_DIR)
-    $(CC) -c  -o $@ $<
+	$(CC) -c -o $@ $<
 
-$(TARGET): $(OBJ)| $(BUILD_DIR)
-    $(LD) $^ -o $@
+$(TARGET): $(OBJ)
+	$(LD) -o $@ $<
 
-$(BUILD_DIR):
-    @mkdir -p $@
+$(BUILD_DIR): $(SOURCE_DIR)/$(NAME).c
+	@mkdir -p $@
 
-clean: 
-    $(RM) $(BUILD_DIR)/$(NAME) $(OBJ) $(LOG)
+clean:
+	$(RM) -r $(BUILD_DIR)/
 
 check: $(LOG) 
     @temp = 0 ; \
